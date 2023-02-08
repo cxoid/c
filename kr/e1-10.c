@@ -4,24 +4,27 @@
 
 main()
 {
-	int c;
+	int c, flag;
 
 	while ((c = getchar()) != EOF) {
-		while (c == '\t') {
-			putchar('\\');
-			putchar('t');
-			c = getchar();
+		flag = 0;
+
+		if (c == '\t') {
+			flag = 't';
 		}
-		while (c == '\b') {
-			putchar('\\');
-			putchar('b');
-			c = getchar();
+		if (c == '\\') {
+			flag = '\\';
 		}
-		while (c == '\\') {
-			putchar('\\');
-			putchar('\\');
-			c = getchar();
+		if (c == '\b') {
+			flag = 'b';
 		}
-		putchar(c);
+
+		if (flag) {
+			putchar('\\');
+			putchar(flag);
+		}
+		else {
+			putchar(c);
+		}
 	}
 }
